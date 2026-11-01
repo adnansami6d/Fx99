@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#e3e6ea">
+<title>Messages</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+<div id="app">
+
+  <!-- Lock -->
+  <section id="lock" class="screen active">
+    <div class="lock-wrap">
+      <div class="brand">
+        <div class="logo"><i data-ic="msg"></i></div>
+        <h1>Messages</h1>
+      </div>
+
+      <form id="lockForm" class="glass panel" autocomplete="off">
+        <label class="lbl" id="lockLbl" for="pin">Enter PIN</label>
+        <input id="pin" class="pin" type="password" inputmode="numeric" maxlength="7" placeholder="••••••" autocomplete="off">
+        <div class="err" id="lockErr" role="alert"></div>
+        <button class="btn" id="goBtn" type="submit">Continue</button>
+      </form>
+
+      <button class="link" id="swapBtn" type="button">Create a new chat</button>
+    </div>
+  </section>
+
+  <!-- Chat -->
+  <section id="chat" class="screen">
+    <header class="hdr hdr-normal" id="hdrMain">
+      <button class="ib" id="exitBtn" aria-label="Exit"><i data-ic="logout"></i></button>
+      <div class="av"><i data-ic="lock"></i></div>
+      <div class="who">
+        <b>Private chat</b>
+        <div class="status" id="subline">Connected</div>
+      </div>
+      <button class="ib" id="pinBtn" aria-label="Show PIN"><i data-ic="key"></i></button>
+    </header>
+    <header class="hdr hdr-sel">
+      <button class="ib" id="selCancel" aria-label="Cancel"><i data-ic="x"></i></button>
+      <b id="selCount">0 selected</b>
+      <button class="ib" id="selCopy" aria-label="Copy"><i data-ic="copy"></i></button>
+      <button class="ib del" id="selDel" aria-label="Delete"><i data-ic="trash"></i></button>
+    </header>
+
+    <main id="list"></main>
+    <button class="tobottom hidden" id="toBottom" aria-label="Jump to latest"><i data-ic="send"></i><span id="newCnt"></span></button>
+
+    <footer class="composer" id="composer">
+      <textarea id="msgInput" rows="1" placeholder="Message" autocomplete="off" autocapitalize="sentences"></textarea>
+      <button class="send" id="sendBtn" aria-label="Send"><i data-ic="send"></i></button>
+    </footer>
+  </section>
+</div>
+
+<div class="modal" id="delModal"><div class="sheet">
+  <h3>Delete messages?</h3>
+  <p id="delText">Selected messages will be deleted for everyone.</p>
+  <div class="acts"><button id="delNo">Cancel</button><button class="danger" id="delYes">Delete</button></div>
+</div></div>
+
+<div class="modal" id="pinModal"><div class="sheet">
+  <h3>PIN</h3>
+  <div class="bigpin" id="bigPin">••••••</div>
+  <p id="pinNote">Share it only with the person who should join. It is not stored anywhere.</p>
+  <div class="acts"><button id="pinCopy">Copy</button><button class="ok" id="pinClose">Done</button></div>
+</div></div>
+
+<div id="toast"></div>
+
+<script src="index.js"></script>
+</body>
+</html>
